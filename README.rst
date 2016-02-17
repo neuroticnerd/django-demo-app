@@ -1,0 +1,3 @@
+Demo Django Application
+============================
+

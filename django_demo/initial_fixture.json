@@ -1,0 +1,28 @@
+[
+{
+  "fields": {
+    "domain": "demo.shiftleftlogical.com",
+    "name": "Django Demo"
+  },
+  "model": "sites.site",
+  "pk": 1
+},
+{
+  "fields": {
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": true,
+    "is_staff": true,
+    "last_login": "2016-02-16T23:28:12.169Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$3NnBZ73k9pkX$rkwPOaeoc2rjeGtwmFcfaHwcbftki+m8juNsDYbwZwg=",
+    "email": "admin@shiftleftlogical.com",
+    "date_joined": "2016-02-16T23:28:02.422Z"
+  },
+  "model": "auth.user",
+  "pk": 1
+}
+]
