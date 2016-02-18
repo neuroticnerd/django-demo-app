@@ -1,0 +1,56 @@
+{% load static staticfiles bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <meta name="author" content="Bryce Eggleton">
+
+    <title>{% block title %}{{ current_site.name }}{% endblock %}{% block subtitle %}{% endblock subtitle %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https:{% bootstrap_css_url %}">
+
+    <!-- main project CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
+
+    <!-- additional tags for the head element -->
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+
+  <body>
+
+    {% block navbar %}
+    {% include 'navigation.html' %}
+    {% endblock navbar %}
+
+    {% block messages %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            <a class="close" data-dismiss="alert">×</a>
+            {{ message|safe }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endblock %}
+
+    {% block container %}
+    <div class="container container-main">
+      {% block content %}{% endblock content %}
+    </div>
+    {% endblock container %}
+
+    <!-- Placed at the end of the page to load faster -->
+    <script src="https:{% bootstrap_jquery_url %}"></script>
+    <script src="https:{% bootstrap_javascript_url %}"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+    {% block extra_js %}
+    {% endblock extra_js %}
+  </body>
+</html>
