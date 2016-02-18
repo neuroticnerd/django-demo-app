@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static staticfiles %}
+
+{% block content %}
+<div class="panel panel-danger text-center">
+
+  <div class="panel-heading">
+    <h1 class="panel-title-slim">ERROR {% block error_code %}(unknown){% endblock error_code %}</h1>
+  </div>
+
+  <div class="panel-body">
+  {% block error_content %}
+
+    <p class="large-text slim">
+      {% block error_header %}{% endblock error_header %}
+    </p>
+
+    <div class="center-block crit-fail">
+      <img src="{% static 'main/img/crit-fail.jpg' %}">
+    </div>
+
+    <p class="large-text slim">
+      {% block error_footer %}{% endblock error_footer %}
+    </p>
+
+  {% endblock error_content %}
+  </div>
+
+  <div class="panel-body bg-danger text-danger">
+    <h3 class="panel-title-slim">{% block error_message %}{% endblock error_message %}</h3>
+  </div>
+
+</div>
+{% endblock content %}
