@@ -37,8 +37,8 @@ from an alternative source.
 
 You should now be able to login as:
 
-*   username=``admin``
-*   password=``superuser``
+*   username: ``admin``
+*   password: ``superuser``
 
 There are a number of environment variables which you can set that will
 be read into the ``settings.py`` file to modify runtime behavior:
