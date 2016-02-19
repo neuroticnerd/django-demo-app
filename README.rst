@@ -2,6 +2,61 @@
 Demo Django Application
 ============================
 
+Local Development Setup
+-------------------------
+
+After cloning the repo, you will want to ``cd`` to the root of the project
+and create a new virtualenv:
+
+.. code:: shell
+
+    mkvirtualenv djangodemo
+
+Then you will need to install the project requirements:
+
+.. code:: shell
+
+    pip install -r requirements.txt
+
+The database needs to be configured and a default user and site loaded:
+
+.. code:: shell
+
+    python manage.py migrate
+    python manage.py loaddata initial_fixture.json
+
+After that has completed you will be able to run the dev server via:
+
+.. code:: shell
+
+    python manage.py runserver --insecure
+
+The ``--insecure`` flag ensures that static content will be served even if you
+set ``DEBUG=False`` since it is not currently setup to serve static content
+from an alternative source.
+
+You should now be able to login as:
+- username=admin
+- password=superuser
+
+There are a number of environment variables which you can set that will
+be read into the ``settings.py`` file to modify runtime behavior:
+
+*   ``DJANGO_DEMO_SITE_ID``: will populate the ``SITE_ID`` setting
+
+*   ``DJANGO_DEMO_DEBUG``: will be read into the Django ``DEBUG`` setting
+
+*   ``DJANGO_DEMO_TEMPLATE_DEBUG``: will be read into the Django ``TEMPLATE_DEBUG`` setting
+
+*   ``DJANGO_DEMO_SECRET_KEY``: will be read into the ``SECRET_KEY`` setting
+
+*   ``DJANGO_DEMO_STATIC_ROOT``: populates the ``STATIC_ROOT`` setting
+
+*   ``DJANGO_DEMO_MEDIA_ROOT``: populates the ``MEDIA_ROOT`` setting
+
+
+
+
 Chosen Project
 ----------------
 
@@ -27,6 +82,12 @@ notable things might be the absence of proper documentation and pytests. I
 wanted to make sure the functionality existed first, but then due to the
 limited availability of time to work on the project, I wasn't able to go back
 and add unit tests and some proper docstrings.
+
+The next thing which is absent is a ``vagrantfile``. I normally use Vagrant
+and VirtualBox for local development environments since it makes it
+exponentially easier for someone unfamiliar with the project to get up and
+running much faster. I do know that Hashicorp has released a successor to
+Vagrant now, but I've not had time yet to investigate and get up to speed.
 
 I would replace
 SQLite as the database backend with PostgreSQL for any sort of production
@@ -54,9 +115,7 @@ unwieldy without pagination as soon as the number of actions started growing.
 Django has easy ways of adding pagination but unfortunately I have not yet
 had time to add it into the project.
 
-
-Required Environment Variables
---------------------------------
-
-*   ``DJANGO_DEMO_DEBUG``: will be read into the Django ``DEBUG`` setting
-*   ``DJANGO_DEMO_SECRET_KEY``: will be read into the ``SECRET_KEY`` setting
+Lastly, it should really have a method included for easily doing repeatable
+deployments. I like Ansible for this task, and that's what I always use when
+given the choice. It has the benefit of being agent-less and operating over
+SSH which increases security.
