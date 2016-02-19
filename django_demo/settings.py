@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     'bootstrap3',
+    'pytz',
 
     'django_demo.accounts',
     'django_demo.main',
@@ -71,6 +72,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
+
+    'django_demo.main.middleware.ModifiedByMiddleware',
 )
 
 DJANGO_TEMPLATE_OPTIONS = {
@@ -138,10 +141,10 @@ LOGGING = {
                 '[%(asctime)s] %(levelname)s '
                 '[%(pathname)s:%(lineno)s] %(message)s'
             ),
-            'datefmt': '%d/%b/%Y %H:%M:%S'
+            'datefmt': '%d/%b/%Y %H:%M:%S',
         },
         'simple': {
-            'format': '%(levelname)s %(message)s'
+            'format': '%(levelname)s %(message)s',
         },
     },
     'handlers': {
@@ -149,18 +152,28 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': LOGFILE_PATH,
-            'formatter': 'verbose'
+            'formatter': 'verbose',
         },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        }
+            'formatter': 'simple',
+        },
+        'dbconsole': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
     },
     'loggers': {
         'django': {
             'handlers': ['console', 'django_log_file'],
-            'propagate': True,
+            'propagate': False,
+            'level': 'DEBUG',
+        },
+        'django.db.backends': {
+            'handlers': ['dbconsole', 'django_log_file'],
+            'propagate': False,
             'level': 'DEBUG',
         },
     }

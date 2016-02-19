@@ -1,6 +1,6 @@
 {% load bootstrap3 %}
 
-<form class="form form-horizontal form-login" method="POST" action="{% url 'accounts:login' %}">
+<form class="form form-horizontal form-login" method="POST" {% if default_form_action %}action="{% url 'accounts:login' %}"{% endif %}>
   {% csrf_token %}
   {% bootstrap_form form=login_form layout='horizontal' %}
   <div class="form-group">

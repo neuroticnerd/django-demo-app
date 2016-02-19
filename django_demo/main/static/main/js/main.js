@@ -1,17 +1,6 @@
 (function(){
   var tooltipDelay = 500;
 
-  $(window).scroll(function () {
-
-    var top = $(document).scrollTop();
-    if (top > 50) {
-      $('.navbar').removeClass('navbar-transparent');
-    } else {
-      $('.navbar').addClass('navbar-transparent');
-    }
-
-  }).trigger('scroll');
-
   $('[data-toggle="tooltip"]').tooltip({
     container: 'body',
     delay: { "show": tooltipDelay, "hide": 0 },

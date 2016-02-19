@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_protect
 class LoginView(generic.FormView):
     success_url = settings.LOGIN_REDIRECT_URL
     form_class = AuthenticationForm
-    redirect_field_name = auth.REDIRECT_FIELD_NAME
+    redirect_param = getattr(settings, 'REDIRECT_FIELD_NAME', 'next')
     template_name = 'accounts/login.html'
 
     @method_decorator(sensitive_post_parameters('password'))
@@ -32,7 +32,7 @@ class LoginView(generic.FormView):
         return self.render_to_response(self.get_context_data(form=form))
 
     def get_success_url(self):
-        redirect_to = self.request.REQUEST.get(self.redirect_field_name)
+        redirect_to = self.request.GET.get(self.redirect_param)
         if not is_safe_url(url=redirect_to, host=self.request.get_host()):
             redirect_to = self.success_url
         return redirect_to

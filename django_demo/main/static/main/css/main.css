@@ -47,8 +47,8 @@ html, body{
 }
 
 .alert-messages {
-  margin-top: 55px;
-  margin-bottom: 0;
+  margin-top: 70px;
+  margin-bottom: -70px;
 }
 
 .navbar-brand {
@@ -61,8 +61,50 @@ html, body{
   margin-right: 10px;
 }
 
-body > .navbar-transparent {
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
+.dashboard-tabs {
+  padding: 10px;
+}
+
+.form-login .form-group > div > input {
+  width: auto;
+}
+
+a.dropdown-toggle.profile-menu {
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  vertical-align: middle;
+  line-height: 50px;
+}
+img.user-gravatar {
+  height: 50px;
+  vertical-align: top;
+}
+
+.github-link > i {
+  max-height: 20px;
+}
+
+.div-table > div.row {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.div-table > div.row:not(:first-child) {
+  border-top: 1px solid #ddd;
+}
+.div-table > div.row > div {
+  padding: 8px;
+}
+.div-table > div.row > div:first-child {
+  border-right: 1px dotted #ddd;
+}
+.div-table-hover > div.row:hover {
+  background: #f5f5f5;
+}
+
+.table-striped div.row:nth-of-type(odd) {
+  background: #e0e0e0;
+}
+.table-striped div.row:nth-of-type(even) {
+  background: #FFFFFF;
 }
