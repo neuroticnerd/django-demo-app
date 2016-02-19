@@ -36,8 +36,8 @@ set ``DEBUG=False`` since it is not currently setup to serve static content
 from an alternative source.
 
 You should now be able to login as:
-- username=admin
-- password=superuser
+*   username=``admin``
+*   password=``superuser``
 
 There are a number of environment variables which you can set that will
 be read into the ``settings.py`` file to modify runtime behavior:
@@ -70,7 +70,8 @@ Unfortunately, I didn't have nearly as much time as I had planned for to work
 on this; due to the double-holiday weekend I wasn't able to even start until
 Tuesday. Then wednesday I had to drive down to my folks place to tend to some
 family matters with my grandfather. So between the two of those things I only
-had approx. three to three and a half days of time to actually invest in this.
+had approx. three to three and a half days of time to actually invest in this,
+I had not anticipated this week being as hectic as it has been.
 
 
 Things I Would Do Differently
@@ -115,7 +116,7 @@ unwieldy without pagination as soon as the number of actions started growing.
 Django has easy ways of adding pagination but unfortunately I have not yet
 had time to add it into the project.
 
-Lastly, it should really have a method included for easily doing repeatable
-deployments. I like Ansible for this task, and that's what I always use when
-given the choice. It has the benefit of being agent-less and operating over
-SSH which increases security.
+Lastly, it should really have a method included for easily doing repeatable,
+idempotent deployments. I like Ansible for this task, and that's what I always
+use when given the choice. It has the benefit of being agent-less and operating
+over SSH which increases security.
