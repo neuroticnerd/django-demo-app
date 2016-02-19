@@ -4,46 +4,43 @@
 {% block content %}
 
 <div class="panel panel-default">
-
-  <div class="panel-heading">
+  <div class="panel-heading text-center">
     <h1 class="panel-title panel-title-slim">Actions</h1>
   </div>
 
-  <div class="panel-body text-center">
-    <a href="{% url 'actions:list' %}" class="btn btn-default">View All Actions</a>
-  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Action</th>
+        <th>Created By</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
 
-  <div class="panel-body">
-
-    <ul class="nav nav-pills dashboard-tabs">
-      <li role="presentation" class="active">
-        <a data-toggle="tab" href="#my-actions">Actions This Month</a>
-      </li>
-      <li role="presentation">
-        <a data-toggle="tab" href="#month-actions">My Actions This Month</a>
-      </li>
-    </ul>
-
-  </div>
-
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="month-actions">
-      {% with panel_title='Actions This Month' object_list=month_actions %}
-      {% include 'main/actions_panel.html' %}
-      {% endwith %}
-    </div>
-    <div role="tabpanel" class="tab-pane fade" id="my-actions">
-      {% with panel_title='My Actions' object_list=my_actions %}
-      {% include 'main/actions_panel.html' %}
-      {% endwith %}
-    </div>
-  </div>
+    <tbody>
+      {% for action in object_list %}
+      <tr data-toggle="modal" data-target="#action-detail-modal" data-location="#action-data-{{ action.id }}">
+        <th class="hidden">
+          <div id="action-data-{{ action.id }}">
+            {% include 'actions/action_detail_block.html' %}
+          </div>
+        </th>
+        <th scope="row">{{ action.id }}</th>
+        <td>
+          <a class="action-link" href="{% url 'actions:detail' pk=action.id %}">{{ action.title }}</a>
+        </td>
+        <td>{{ action.created_by }}</td>
+        <td>{{ action.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
   <div class="panel-footer">
   </div>
 
 </div>
-
 
 <div class="modal fade" id="action-detail-modal" tabindex="-1" role="action-detail" aria-labelledby="action-detail-modal-label">
   <div class="modal-dialog" role="document">

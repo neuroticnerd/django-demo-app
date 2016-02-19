@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="panel panel-warning">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Confirm Deletion</h1>
+  </div>
+
+  <div class="panel-body text-center">
+    <form method="POST">
+      {% csrf_token %}
+      <p class="lead">Are you sure you wish to delete the action "{{ object.title }}"?</p>
+      <button type="submit" class="btn btn-danger">
+        <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete This Action
+      </button>
+  </div>
+
+</div>
+{% endblock content %}

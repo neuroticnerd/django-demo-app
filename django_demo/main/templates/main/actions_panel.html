@@ -1,0 +1,29 @@
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Action</th>
+        <th>Created By</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for action in object_list %}
+      <tr data-toggle="modal" data-target="#action-detail-modal" data-location="#action-data-{{ action.id }}">
+        <th class="hidden">
+          <div id="action-data-{{ action.id }}">
+            {% include 'actions/action_detail_block.html' %}
+          </div>
+        </th>
+        <th scope="row">{{ action.id }}</th>
+        <td>
+          <a class="action-link" href="{% url 'actions:detail' pk=action.id %}">{{ action.title }}</a>
+        </td>
+        <td>{{ action.created_by }}</td>
+        <td>{{ action.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

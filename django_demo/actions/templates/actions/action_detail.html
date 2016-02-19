@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="panel panel-info">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Action Details</h1>
+  </div>
+
+  <div class="panel-body">
+    {% with action=object %}
+    {% include 'actions/action_detail_block.html' %}
+    {% endwith %}
+  </div>
+
+  <div class="panel-body text-center">
+    <a class="btn btn-default{% if not user.is_staff %} disabled{% endif %}" href="{% url 'actions:edit' pk=object.id %}"{% if not user.is_staff %} disabled="disabled"{% endif %}>
+      <span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;Edit This Action
+    </a>
+    <a class="btn btn-danger{% if not user.is_staff %} disabled{% endif %}" href="{% url 'actions:delete' pk=object.id %}"{% if not user.is_staff %} disabled="disabled"{% endif %}>
+      <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete This Action
+    </a>
+  </div>
+
+</div>
+{% endblock content %}
