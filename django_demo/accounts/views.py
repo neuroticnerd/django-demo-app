@@ -48,4 +48,4 @@ class LogoutView(generic.RedirectView):
 
 
 class ProfileView(generic.TemplateView):
-    pass
+    template_name = 'accounts/profile_detail.html'

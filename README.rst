@@ -36,6 +36,7 @@ set ``DEBUG=False`` since it is not currently setup to serve static content
 from an alternative source.
 
 You should now be able to login as:
+
 *   username=``admin``
 *   password=``superuser``
 
