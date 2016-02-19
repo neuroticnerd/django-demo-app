@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="panel panel-default panel-form-login">
+  <div class="panel-heading text-center">
+    <h1 class="panel-title panel-title-slim">Sign In</h1>
+  </div>
+  <div class="panel-body">
+    {% include 'accounts/login_form.html' with login_form=form %}
+  </div>
+</div>
+{% endblock content %}

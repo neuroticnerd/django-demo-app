@@ -4,6 +4,8 @@ import os
 from ast import literal_eval
 from os.path import abspath, dirname, join
 
+from django.core.urlresolvers import reverse_lazy
+
 
 # retrieve python objects from strings in environment variables
 def hydrate(data):
@@ -39,6 +41,10 @@ STATIC_ROOT = env('STATIC_ROOT', join(BASE_DIR, 'static'))
 MEDIA_URL = '/media/'
 MEDIA_ROOT = env('MEDIA_ROOT', join(BASE_DIR, 'media'))
 
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGOUT_URL = reverse_lazy('accounts:logout')
+LOGIN_REDIRECT_URL = reverse_lazy('main:dashboard')
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +56,7 @@ INSTALLED_APPS = (
 
     'bootstrap3',
 
+    'django_demo.accounts',
     'django_demo.main',
     'django_demo.actions',
 )
@@ -75,7 +82,7 @@ DJANGO_TEMPLATE_OPTIONS = {
         'django.template.context_processors.static',
         'django.template.context_processors.tz',
         'django.contrib.messages.context_processors.messages',
-        'django_demo.context_processors.current_site',
+        'django_demo.context_processors.extra_context',
     ],
     'debug': env('TEMPLATE_DEBUG', DEBUG, bool),
 }
