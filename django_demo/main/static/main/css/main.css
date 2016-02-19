@@ -95,8 +95,8 @@ img.user-gravatar {
 .div-table > div.row > div {
   padding: 8px;
 }
-.div-table > div.row > div:first-child {
-  border-right: 1px dotted #ddd;
+.div-table > div.row > div:not(:first-child) {
+  border-left: 1px dotted #ddd;
 }
 .div-table-hover > div.row:hover {
   background: #f5f5f5;

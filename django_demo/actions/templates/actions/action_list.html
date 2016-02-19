@@ -4,38 +4,45 @@
 {% block content %}
 
 <div class="panel panel-default">
-  <div class="panel-heading text-center">
+
+  <div class="panel-heading">
     <h1 class="panel-title panel-title-slim">Actions</h1>
   </div>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Action</th>
-        <th>Created By</th>
-        <th>Created At</th>
-      </tr>
-    </thead>
+  <div class="panel-body text-center">
+    <a class="btn btn-default{% if not user.is_staff %} disabled{% endif %}" href="{% url 'actions:assign' %}"{% if not user.is_staff %} disabled="disabled"{% endif %}>
+      <span class="glyphicon glyphicon-share"></span>&nbsp;&nbsp;Assign An Action
+    </a>
+    <a href="{% url 'actions:create' %}" class="btn btn-success">
+      <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add An Action
+    </a>
+  </div>
 
-    <tbody>
-      {% for action in object_list %}
-      <tr data-toggle="modal" data-target="#action-detail-modal" data-location="#action-data-{{ action.id }}">
-        <th class="hidden">
-          <div id="action-data-{{ action.id }}">
-            {% include 'actions/action_detail_block.html' %}
-          </div>
-        </th>
-        <th scope="row">{{ action.id }}</th>
-        <td>
-          <a class="action-link" href="{% url 'actions:detail' pk=action.id %}">{{ action.title }}</a>
-        </td>
-        <td>{{ action.created_by }}</td>
-        <td>{{ action.created_at }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="panel-body">
+
+    <ul class="nav nav-pills dashboard-tabs">
+      <li role="presentation" class="active">
+        <a data-toggle="tab" href="#all-actions">All Actions</a>
+      </li>
+      <li role="presentation">
+        <a data-toggle="tab" href="#month-actions">Actions This Month</a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="all-actions">
+      {% with panel_title='All Actions' object_list=object_list %}
+      {% include 'actions/actions_table.html' %}
+      {% endwith %}
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="month-actions">
+      {% with panel_title='Actions This Month' object_list=month_actions %}
+      {% include 'actions/actions_table.html' %}
+      {% endwith %}
+    </div>
+  </div>
 
   <div class="panel-footer">
   </div>

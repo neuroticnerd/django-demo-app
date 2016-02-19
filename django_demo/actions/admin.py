@@ -14,4 +14,15 @@ class ActionAdmin(admin.ModelAdmin):
     )
 
 
+class ActionAssignmentAdmin(admin.ModelAdmin):
+    list_display = (
+        'action', 'user', 'created_by', 'created_at',
+    )
+    fields = ('action', 'user', 'created_at', 'modified_at')
+    readonly_fields = (
+        'created_by', 'modified_by',
+    )
+
+
 admin.site.register(models.Action, ActionAdmin)
+admin.site.register(models.ActionAssignment, ActionAssignmentAdmin)

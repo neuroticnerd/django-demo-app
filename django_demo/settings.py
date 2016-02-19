@@ -34,6 +34,7 @@ SECRET_KEY = env('SECRET_KEY', DEFAULT_SECRET_KEY)
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', ['*'], hydrate)
 WSGI_APPLICATION = 'django_demo.wsgi.application'
 ROOT_URLCONF = 'django_demo.urls'
+APPEND_SLASH = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = env('STATIC_ROOT', join(BASE_DIR, 'static'))
@@ -178,3 +179,7 @@ LOGGING = {
         },
     }
 }
+
+ADMINS = []
+SERVER_EMAIL = ''
+EMAIL_HOST = ''

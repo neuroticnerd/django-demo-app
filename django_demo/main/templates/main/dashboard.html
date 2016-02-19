@@ -11,6 +11,12 @@
 
   <div class="panel-body text-center">
     <a href="{% url 'actions:list' %}" class="btn btn-default">View All Actions</a>
+    <a class="btn btn-default{% if not user.is_staff %} disabled{% endif %}" href="{% url 'actions:assign' %}"{% if not user.is_staff %} disabled="disabled"{% endif %}>
+      <span class="glyphicon glyphicon-share"></span>&nbsp;&nbsp;Assign An Action
+    </a>
+    <a href="{% url 'actions:create' %}" class="btn btn-success">
+      <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add An Action
+    </a>
   </div>
 
   <div class="panel-body">
@@ -29,12 +35,12 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="month-actions">
       {% with panel_title='Actions This Month' object_list=month_actions %}
-      {% include 'main/actions_panel.html' %}
+      {% include 'actions/actions_table.html' %}
       {% endwith %}
     </div>
     <div role="tabpanel" class="tab-pane fade" id="my-actions">
       {% with panel_title='My Actions' object_list=my_actions %}
-      {% include 'main/actions_panel.html' %}
+      {% include 'actions/actions_table.html' %}
       {% endwith %}
     </div>
   </div>

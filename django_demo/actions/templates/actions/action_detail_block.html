@@ -9,6 +9,20 @@
     <div class="col-md-9">{{ action.description }}</div>
   </div>
   <div class="row">
+    <div class="col-md-3">Assigned To</div>
+    <div class="col-md-9">
+      <ul>
+        {% for assignment in action.assigned_to.all %}
+        <li>
+          {% with user=assignment.user %}
+          {{ user.first_name }} ({{ user.username }})
+          {% endwith %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-3">Created By</div>
     <div class="col-md-9">{{ action.created_by }}</div>
   </div>
