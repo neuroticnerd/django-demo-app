@@ -1,7 +1,53 @@
 
-html, body{
+html, body {
   width: 100%;
-  height:100%;
+  height: 100%;
+}
+
+body {
+  padding-top: 100px;
+  min-width: 480px;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .navbar {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .navbar {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar .nav.navbar-nav {
+    text-align: center;
+  }
+  .navbar .nav.navbar-nav li:not(:last-child) {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom: solid 1px #e7e7e7;
+  }
+  .panel-body .btn, .panel-heading .btn {
+    margin-bottom: 7px;
+  }
+}
+
+@media (min-width: 768px) {
+  li > a.github-link {
+    max-height: 20px;
+    line-height: 16px;
+    font-size: 24px;
+    padding-top: 13px;
+  }
 }
 
 .large-text {
@@ -42,10 +88,6 @@ html, body{
   border-top: 1px solid #eee;
 }
 
-.container-main {
-  padding-top: 100px;
-}
-
 .alert-messages {
   margin-top: 70px;
   margin-bottom: -70px;
@@ -54,7 +96,8 @@ html, body{
 .navbar-brand {
   font-weight: bold;
   font-size: 1.5em;
-  line-height: 1em;
+  line-height: 20px;
+  vertical-align: middle;
 }
 .navbar-brand > img {
   float: left;
@@ -84,10 +127,6 @@ a.dropdown-toggle.profile-menu {
 img.user-gravatar {
   height: 50px;
   vertical-align: top;
-}
-
-.github-link > i {
-  max-height: 20px;
 }
 
 .div-table > div.row {
