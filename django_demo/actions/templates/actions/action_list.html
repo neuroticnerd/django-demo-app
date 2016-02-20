@@ -13,7 +13,7 @@
     <a class="btn btn-default{% if not user.is_staff %} disabled{% endif %}" href="{% url 'actions:assign' %}"{% if not user.is_staff %} disabled="disabled"{% endif %}>
       <span class="glyphicon glyphicon-share"></span>&nbsp;&nbsp;Assign An Action
     </a>
-    <a href="{% url 'actions:create' %}" class="btn btn-success">
+    <a class="btn btn-success{% if not user.is_staff %} disabled{% endif %}" href="{% url 'actions:create' %}"{% if not user.is_staff %} disabled="disabled"{% endif %}>
       <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Add An Action
     </a>
   </div>
