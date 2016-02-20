@@ -43,10 +43,9 @@ body {
 
 @media (min-width: 768px) {
   li > a.github-link {
-    max-height: 20px;
-    line-height: 16px;
     font-size: 24px;
     padding-top: 13px;
+    padding-bottom: 13px;
   }
 }
 
