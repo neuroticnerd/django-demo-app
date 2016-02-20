@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="panel panel-info">
+  <div class="panel-body">
+    <div class="action-detail div-table div-table-hover">
+
+      <div class="row">
+        <div class="col-md-3">viewport:width</div>
+        <div class="col-md-9 viewport-width"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">viewport:height</div>
+        <div class="col-md-9 viewport-height"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+(function(){
+
+  $('.viewport-width').append($(window).width());
+  $('.viewport-height').append($(window).height());
+
+})();
+</script>
+{% endblock extra_js %}
