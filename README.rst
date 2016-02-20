@@ -102,6 +102,11 @@ and their CDN handle serving static content. Replacing the static files
 backend with a 3rd party S3 connector in the Django settings has (in my
 experience at least) been a fairly painless way to store static files.
 
+Especially where mobile or tablet devices are concerned, I would also want to
+be using LESS/SASS for preprocessing CSS, and
+`Django Pipeline <https://django-pipeline.readthedocs.org/en/latest/>`_
+for processing and compressing static content.
+
 A good number of the things I have mentioned above are predicated on the
 assumption that most production sites would have multiple application servers
 behind routing/load balancing making things like storing sessions or static

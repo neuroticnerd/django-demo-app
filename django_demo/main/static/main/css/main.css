@@ -65,6 +65,11 @@ html, body{
   padding: 10px;
 }
 
+.landing-image {
+  width: 100%;
+  max-width: 636px;
+}
+
 .form-login .form-group > div > input {
   width: auto;
 }
