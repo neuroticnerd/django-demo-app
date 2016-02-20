@@ -23,23 +23,31 @@
 
     <ul class="nav nav-pills dashboard-tabs">
       <li role="presentation" class="active">
-        <a data-toggle="tab" href="#my-actions">Actions This Month</a>
+        <a data-toggle="tab" href="#assigned-actions">Assigned To Me</a>
       </li>
       <li role="presentation">
-        <a data-toggle="tab" href="#month-actions">My Actions This Month</a>
+        <a data-toggle="tab" href="#month-actions">All Actions This Month</a>
+      </li>
+      <li role="presentation">
+        <a data-toggle="tab" href="#created-actions">Actions I Created</a>
       </li>
     </ul>
 
   </div>
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="month-actions">
-      {% with panel_title='Actions This Month' object_list=month_actions %}
+    <div role="tabpanel" class="tab-pane fade in active" id="assigned-actions">
+      {% with object_list=assigned_actions %}
       {% include 'actions/actions_table.html' %}
       {% endwith %}
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="my-actions">
-      {% with panel_title='My Actions' object_list=my_actions %}
+    <div role="tabpanel" class="tab-pane fade" id="month-actions">
+      {% with object_list=month_actions %}
+      {% include 'actions/actions_table.html' %}
+      {% endwith %}
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="created-actions">
+      {% with object_list=created_actions %}
       {% include 'actions/actions_table.html' %}
       {% endwith %}
     </div>
