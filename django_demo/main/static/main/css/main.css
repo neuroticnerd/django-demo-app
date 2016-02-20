@@ -88,8 +88,7 @@ body {
 }
 
 .alert-messages {
-  margin-top: 70px;
-  margin-bottom: -70px;
+  margin-bottom: 20px;
 }
 
 .navbar-brand {
