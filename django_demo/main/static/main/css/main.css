@@ -111,8 +111,9 @@ body {
   max-width: 636px;
 }
 
-.form-login .form-group > div > input {
-  width: auto;
+.form-login .form-group > div > input.form-control {
+  width: 20em;
+  max-width: 100%;
 }
 
 a.dropdown-toggle.profile-menu {

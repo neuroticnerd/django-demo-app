@@ -18,8 +18,4 @@
     return false;
   });
 
-  var loginForm = $('.form-login');
-  var inputs = loginForm.find('.form-group > div > input.form-control');
-  inputs.attr('size', 40);
-
 })();
