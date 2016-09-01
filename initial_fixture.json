@@ -10,8 +10,8 @@
 {
   "fields": {
     "username": "admin",
-    "first_name": "Phase 5",
-    "last_name": "Group",
+    "first_name": "Bryce",
+    "last_name": "Eggleton",
     "is_active": true,
     "is_superuser": true,
     "is_staff": true,
@@ -19,7 +19,7 @@
     "groups": [],
     "user_permissions": [],
     "password": "pbkdf2_sha256$20000$3NnBZ73k9pkX$rkwPOaeoc2rjeGtwmFcfaHwcbftki+m8juNsDYbwZwg=",
-    "email": "admin@phase5group.com",
+    "email": "kraken@neuroticnerd.com",
     "date_joined": "2016-02-16T23:28:02.422Z"
   },
   "model": "auth.user",
